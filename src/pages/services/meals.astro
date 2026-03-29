@@ -1,10 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="配食サービス事業 | 沖縄県高齢者協同組合" description="地域のお年寄りへ、管理栄養士監修の健康的で温かいお弁当をお届けします。普通食、病理食、きざみ食・ミキサー食に対応。">
   <!-- Page Header -->
-  <div class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('/images/image_1.jpg');">
+  <div class="page-header" style={`background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('${base}images/image_1.jpg');`}>
     <div class="container text-center">
       <h1 class="page-title">配食サービス事業</h1>
       <p class="page-subtitle">健康と笑顔を、毎日お届けします</p>

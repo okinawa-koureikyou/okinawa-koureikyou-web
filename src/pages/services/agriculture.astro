@@ -1,9 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="地産地消農産事業 | 沖縄県高齢者協同組合" description="沖縄の豊かな自然が育んだ農産物を、地域の皆様へ。地産地消を通じて、食の安全と地域農業の活性化に貢献します。">
-  <div class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/images/image_5.jpg');">
+  <div class="page-header" style={`background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('${base}images/image_5.jpg');`}>
     <div class="container text-center">
       <h1 class="page-title">地産地消農産事業</h1>
       <p class="page-subtitle">沖縄の「旬」と「安心」を食卓へ</p>
@@ -43,7 +44,7 @@ import Layout from '../../layouts/Layout.astro';
       </div>
       
       <div class="text-center mt-5">
-        <a href="/services" class="btn btn-secondary">サービス案内一覧へ戻る</a>
+        <a href={base + "services"} class="btn btn-secondary">サービス案内一覧へ戻る</a>
       </div>
     </div>
   </section>

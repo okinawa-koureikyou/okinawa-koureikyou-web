@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="組合概要・事業所案内 | 沖縄県高齢者協同組合" description="沖縄県高齢者協同組合の理念、基本方針、および各エリアの事業所一覧をご案内します。">
   <!-- Page Header -->
-  <div class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/images/image_3.jpg');">
+  <div class="page-header" style={`background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('${base}images/image_3.jpg');`}>
     <div class="container text-center">
       <h1 class="page-title">組合概要・事業所案内</h1>
       <p class="page-subtitle">地域と響き合い、安心して暮らせる社会へ</p>
@@ -127,7 +128,7 @@ import Layout from '../layouts/Layout.astro';
         </ul>
         
         <div class="mt-4">
-          <a href="/membership" class="btn btn-secondary" style="width: 100%; display: block; padding: 10px;">組合加入のご案内</a>
+          <a href={base + "membership"} class="btn btn-secondary" style="width: 100%; display: block; padding: 10px;">組合加入のご案内</a>
         </div>
       </div>
     </aside>

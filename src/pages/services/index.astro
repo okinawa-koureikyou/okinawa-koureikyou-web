@@ -1,9 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="サービス案内 | 沖縄県高齢者協同組合" description="沖縄県高齢者協同組合が提供する、配食サービスや日常生活支援サービスのご案内です。">
-  <div class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/images/image_4.jpg');">
+  <div class="page-header" style={`background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('${base}images/image_4.jpg');`}>
     <div class="container text-center">
       <h1 class="page-title">サービス案内</h1>
       <p class="page-subtitle">住み慣れた地域で、安心して自分らしく暮らすために</p>
@@ -22,7 +23,7 @@ import Layout from '../../layouts/Layout.astro';
       <div class="services-grid mt-5">
         <!-- Meal Service -->
         <div class="service-card">
-          <div class="service-image" style="background-image: url('/images/image_1.jpg');"></div>
+          <div class="service-image" style={`background-image: url('${base}images/image_1.jpg');`}></div>
           <div class="service-content">
             <h3 class="service-title">配食サービス事業</h3>
             <p class="service-desc">
@@ -33,13 +34,13 @@ import Layout from '../../layouts/Layout.astro';
               <li>地域担当スタッフによる直接手渡し</li>
               <li>土日祝日も営業（一部地域除く）</li>
             </ul>
-            <a href="/services/meals" class="btn btn-primary">詳しく見る</a>
+            <a href={base + "services/meals"} class="btn btn-primary">詳しく見る</a>
           </div>
         </div>
 
         <!-- Life Support -->
         <div class="service-card">
-          <div class="service-image" style="background-image: url('/images/image_2.jpg');"></div>
+          <div class="service-image" style={`background-image: url('${base}images/image_2.jpg');`}></div>
           <div class="service-content">
             <h3 class="service-title">日常生活支援事業</h3>
             <p class="service-desc">
@@ -50,7 +51,7 @@ import Layout from '../../layouts/Layout.astro';
               <li>専門スタッフによる丁寧な対応</li>
               <li>組合員限定の助け合い価格</li>
             </ul>
-            <a href="/services/life-support" class="btn btn-primary">詳しく見る</a>
+            <a href={base + "services/life-support"} class="btn btn-primary">詳しく見る</a>
           </div>
         </div>
       </div>
@@ -62,7 +63,7 @@ import Layout from '../../layouts/Layout.astro';
           <p>「どのサービスが合っているかわからない」「まずはお話を聞きたい」という方もお気軽にご相談ください。</p>
         </div>
         <div class="cta-action">
-          <a href="/contact" class="btn btn-secondary btn-large">お問い合わせはこちら</a>
+          <a href={base + "contact"} class="btn btn-secondary btn-large">お問い合わせはこちら</a>
         </div>
       </div>
     </div>

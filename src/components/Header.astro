@@ -1,18 +1,19 @@
 ---
+const base = import.meta.env.BASE_URL;
 const navItems = [
-  { label: 'ホーム', href: '/' },
-  { label: 'サービス案内', href: '/services' },
-  { label: '組合概要', href: '/about' },
-  { label: '採用情報', href: '/recruit' },
-  { label: 'お知らせ', href: '/news' },
-  { label: '組合加入・様式', href: '/membership' }
+  { label: 'ホーム', href: base },
+  { label: 'サービス案内', href: base + 'services' },
+  { label: '組合概要', href: base + 'about' },
+  { label: '採用情報', href: base + 'recruit' },
+  { label: 'お知らせ', href: base + 'news' },
+  { label: '組合加入・様式', href: base + 'membership' }
 ];
 ---
 
 <header class="header">
   <div class="container header-inner">
-    <a href="/" class="logo">
-      <img src="/images/image_5.jpg" alt="沖縄県高齢者協同組合" class="logo-image" />
+    <a href={base} class="logo">
+      <img src={base + "images/image_5.jpg"} alt="沖縄県高齢者協同組合" class="logo-image" />
     </a>
 
     <!-- Hamburger Menu Icon for Mobile -->
@@ -29,7 +30,7 @@ const navItems = [
           </li>
         ))}
         <li class="nav-item nav-contact">
-          <a href="/contact" class="btn btn-primary btn-sm">お問い合わせ</a>
+          <a href={base + "contact"} class="btn btn-primary btn-sm">お問い合わせ</a>
         </li>
       </ul>
     </nav>

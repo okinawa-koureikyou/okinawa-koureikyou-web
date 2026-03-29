@@ -4,10 +4,11 @@ import { getCollection } from 'astro:content';
 
 const newsEntries = await getCollection('news');
 const newsList = newsEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="お知らせ・配彩だより | 沖縄県高齢者協同組合" description="沖縄県高齢者協同組合からの最新のお知らせや、活動の様子をお届けします。">
-  <div class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/images/image_4.jpg');">
+  <div class="page-header" style={`background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('${base}images/image_4.jpg');`}>
     <div class="container text-center">
       <h1 class="page-title">お知らせ・配彩だより</h1>
       <p class="page-subtitle">日々の活動や、最新の情報をお届けします</p>
@@ -34,7 +35,7 @@ const newsList = newsEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.
 
               return (
                 <article class="news-card">
-                  <a href={`/news/${news.id}`} class="news-link">
+                  <a href={base + `news/${news.id}`} class="news-link">
                     <div class="news-meta">
                       <time datetime={date.toISOString()} class="news-date">{formattedDate}</time>
                       <span class={`news-badge ${isImportant ? 'badge-important' : 'badge-normal'}`}>{category}</span>

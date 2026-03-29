@@ -6,18 +6,19 @@ const allNews = await getCollection('news');
 const latestNews = allNews
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="沖縄県高齢者協同組合 | 健康で安心できる暮らしをサポート">
   <!-- Hero Section -->
-  <section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('/images/image_4.jpg');">
+  <section class="hero" style={`background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('${base}images/image_4.jpg');`}>
     <div class="container hero-content">
       <h1 class="hero-title">沖縄のみなさまへ、<br class="sp-br"/>温かい食事と安心を。</h1>
       <p class="hero-subtitle">私たちは「健康に配慮した安心安全なお食事」のお届けを通じ、<br class="pc-br"/>地域に根ざした活動で高齢者の皆様の暮らしをサポートしています。</p>
       
       <div class="hero-buttons">
-        <a href="/services/meals" class="btn btn-primary btn-large">お弁当のご相談はこちら</a>
-        <a href="/recruit" class="btn btn-secondary btn-large">一緒に働く仲間も募集中</a>
+        <a href={base + "services/meals"} class="btn btn-primary btn-large">お弁当のご相談はこちら</a>
+        <a href={base + "recruit"} class="btn btn-secondary btn-large">一緒に働く仲間も募集中</a>
       </div>
     </div>
   </section>
@@ -41,7 +42,7 @@ const latestNews = allNews
                   {news.data.category}
                 </span>
                 <h3 class="news-summary">
-                  <a href={`/news/${news.id}`}>{news.data.title}</a>
+                  <a href={base + `news/${news.id}`}>{news.data.title}</a>
                 </h3>
               </article>
             );
@@ -50,7 +51,7 @@ const latestNews = allNews
       </div>
       
       <div class="text-center" style="margin-top: 30px;">
-        <a href="/news" class="btn btn-secondary">お知らせ一覧を見る</a>
+        <a href={base + "news"} class="btn btn-secondary">お知らせ一覧を見る</a>
       </div>
     </div>
   </section>
@@ -62,20 +63,20 @@ const latestNews = allNews
       
       <div class="services-grid">
         <div class="service-card">
-          <img src="/images/image_1.jpg" alt="配彩弁当サービス" class="service-img" />
+          <img src={base + "images/image_1.jpg"} alt="配彩弁当サービス" class="service-img" />
           <div class="service-body">
             <h3>配彩弁当サービス</h3>
             <p>健康を支える栄養バランス弁当をお届けします。普通食から病理食、きざみ食まで様々なニーズに対応可能です。</p>
-            <a href="/services/meals" class="btn btn-primary btn-sm mt-3">詳しく見る</a>
+            <a href={base + "services/meals"} class="btn btn-primary btn-sm mt-3">詳しく見る</a>
           </div>
         </div>
 
         <div class="service-card">
-          <img src="/images/image_2.jpg" alt="日常生活支援サービス" class="service-img" />
+          <img src={base + "images/image_2.jpg"} alt="日常生活支援サービス" class="service-img" />
           <div class="service-body">
             <h3>日常生活支援サービス</h3>
             <p>買い物代行や外出支援、ちょっとした困りごとなど、安心して暮らすための生活サポートを行います。</p>
-            <a href="/services/life-support" class="btn btn-primary btn-sm mt-3">詳しく見る</a>
+            <a href={base + "services/life-support"} class="btn btn-primary btn-sm mt-3">詳しく見る</a>
           </div>
         </div>
       </div>
@@ -89,7 +90,7 @@ const latestNews = allNews
       <p>沖縄県高齢者協同組合は、みなさまの出資金（1口1,000円）で運営されています。<br class="pc-br"/>サービスを利用したい方、活動に参加したい方のご加入をいつでもお待ちしております。</p>
       
       <div style="margin-top: 30px;">
-        <a href="/membership" class="btn btn-primary btn-large">組合加入のご案内・手続き</a>
+        <a href={base + "membership"} class="btn btn-primary btn-large">組合加入のご案内・手続き</a>
       </div>
     </div>
   </section>

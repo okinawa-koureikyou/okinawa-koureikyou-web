@@ -16,10 +16,11 @@ const date = entry.data.date;
 const formattedDate = `${date.getFullYear()}年${String(date.getMonth() + 1).padStart(2, '0')}月${String(date.getDate()).padStart(2, '0')}日`;
 const category = entry.data.category;
 const isImportant = entry.data.isImportant;
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title={`${entry.data.title} | 沖縄県高齢者協同組合`} description="お知らせの詳細ページです。">
-  <div class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/images/image_6.jpg');">
+  <div class="page-header" style={`background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('${base}images/image_6.jpg');`}>
     <div class="container text-center">
       <h1 class="page-title">お知らせ・配彩だより</h1>
     </div>
@@ -42,7 +43,7 @@ const isImportant = entry.data.isImportant;
         </div>
         
         <div class="article-footer mt-5 text-center">
-          <a href="/news" class="btn btn-secondary">お知らせ一覧に戻る</a>
+          <a href={base + "news"} class="btn btn-secondary">お知らせ一覧に戻る</a>
         </div>
       </article>
 
