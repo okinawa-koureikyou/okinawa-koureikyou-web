@@ -1,0 +1,189 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="サービス案内 | 沖縄県高齢者協同組合" description="沖縄県高齢者協同組合が提供する、配食サービスや日常生活支援サービスのご案内です。">
+  <div class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/images/image_4.jpg');">
+    <div class="container text-center">
+      <h1 class="page-title">サービス案内</h1>
+      <p class="page-subtitle">住み慣れた地域で、安心して自分らしく暮らすために</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="services-intro text-center">
+        <h2 class="section-heading">お困りごとに寄り添う、2つの柱</h2>
+        <p class="lead-text">
+          私たちは、高齢者の皆様の豊かな暮らしを支えるため、主に「食」と「生活」の2つの側面からサポートを行っています。
+        </p>
+      </div>
+
+      <div class="services-grid mt-5">
+        <!-- Meal Service -->
+        <div class="service-card">
+          <div class="service-image" style="background-image: url('/images/image_1.jpg');"></div>
+          <div class="service-content">
+            <h3 class="service-title">配食サービス事業</h3>
+            <p class="service-desc">
+              管理栄養士監修の健康的で温かいお弁当を、ご自宅までお届けします。併せて安否確認も行い、安心をお届けします。
+            </p>
+            <ul class="service-features">
+              <li>普通食・病理食・きざみ食対応</li>
+              <li>地域担当スタッフによる直接手渡し</li>
+              <li>土日祝日も営業（一部地域除く）</li>
+            </ul>
+            <a href="/services/meals" class="btn btn-primary">詳しく見る</a>
+          </div>
+        </div>
+
+        <!-- Life Support -->
+        <div class="service-card">
+          <div class="service-image" style="background-image: url('/images/image_2.jpg');"></div>
+          <div class="service-content">
+            <h3 class="service-title">日常生活支援事業</h3>
+            <p class="service-desc">
+              お買い物や通院の付き添い、お掃除など、日常生活の「ちょっとしたお困りごと」をお手伝いいたします。
+            </p>
+            <ul class="service-features">
+              <li>家事援助・外出支援</li>
+              <li>専門スタッフによる丁寧な対応</li>
+              <li>組合員限定の助け合い価格</li>
+            </ul>
+            <a href="/services/life-support" class="btn btn-primary">詳しく見る</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Combined CTA -->
+      <div class="cta-banner mt-5">
+        <div class="cta-content">
+          <h3>サービスのご利用に関するお問い合わせ</h3>
+          <p>「どのサービスが合っているかわからない」「まずはお話を聞きたい」という方もお気軽にご相談ください。</p>
+        </div>
+        <div class="cta-action">
+          <a href="/contact" class="btn btn-secondary btn-large">お問い合わせはこちら</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    margin-bottom: 40px;
+  }
+  .page-title { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+  .page-subtitle { font-size: 1.2rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+  .text-center { text-align: center; }
+
+  .services-intro {
+    max-width: 700px;
+    margin: 0 auto 60px;
+  }
+  .section-heading {
+    color: var(--color-primary-dark);
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  .lead-text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .service-card {
+    background: var(--color-white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .service-image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .service-content {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-title {
+    color: var(--color-primary-dark);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .service-desc {
+    color: var(--color-text);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .service-features {
+    margin-bottom: 30px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .service-features li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: var(--color-text-light);
+  }
+
+  .service-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary-dark);
+    font-weight: bold;
+  }
+
+  /* CTA Banner */
+  .cta-banner {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-primary-light);
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .cta-content h3 { color: var(--color-primary-dark); margin-bottom: 10px; }
+  .cta-content p { color: var(--color-text-light); margin: 0; }
+
+  @media (max-width: 991px) {
+    .cta-banner { flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .page-title { font-size: 2rem; }
+  }
+</style>

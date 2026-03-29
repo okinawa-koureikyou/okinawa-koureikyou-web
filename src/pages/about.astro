@@ -1,0 +1,259 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="組合概要・事業所案内 | 沖縄県高齢者協同組合" description="沖縄県高齢者協同組合の理念、基本方針、および各エリアの事業所一覧をご案内します。">
+  <!-- Page Header -->
+  <div class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/images/image_3.jpg');">
+    <div class="container text-center">
+      <h1 class="page-title">組合概要・事業所案内</h1>
+      <p class="page-subtitle">地域と響き合い、安心して暮らせる社会へ</p>
+    </div>
+  </div>
+
+  <div class="container layout-with-sidebar section">
+    
+    <!-- Main Content -->
+    <div class="main-column">
+      
+      <section id="philosophy" class="content-section">
+        <h2 class="section-heading">基本理念</h2>
+        <div class="philosophy-box text-center">
+          <p class="catchphrase">沖縄のみなさまへ、温かい食事と安心を。</p>
+          <p class="desc">
+            私たちは、地域に暮らす高齢者の皆様が、住み慣れた場所で安心して暮らせるよう、組合員同士が協力し合い、助け合う「協同の力」を大切にしています。
+          </p>
+        </div>
+      </section>
+
+      <section id="outline" class="content-section mt-5">
+        <h2 class="section-heading">組合概要</h2>
+        <table class="outline-table">
+          <tbody>
+            <tr>
+              <th>名称</th>
+              <td>生活協同組合・沖縄県高齢者協同組合</td>
+            </tr>
+            <tr>
+              <th>設立</th>
+              <td>平成**年**月**日（※要確認）</td>
+            </tr>
+            <tr>
+              <th>本部所在地</th>
+              <td>〒903-0801<br/>沖縄県那覇市首里末吉町4-1-21 1F<br/>TEL: 098-917-6077 / FAX: 098-917-6078</td>
+            </tr>
+            <tr>
+              <th>代表理事</th>
+              <td>〇〇 〇〇（※要確認）</td>
+            </tr>
+            <tr>
+              <th>主な事業内容</th>
+              <td>配食サービス事業、日常生活支援事業、地産地消農産事業</td>
+            </tr>
+            <tr>
+              <th>組合員数</th>
+              <td>約****名（※要確認）</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="history" class="content-section mt-5">
+        <h2 class="section-heading">沿革</h2>
+        <p class="text-light-gray" style="text-align:center; padding: 30px;">※こちらの原稿（歴史）は後ほど追記いたします。</p>
+      </section>
+
+      <section id="office" class="content-section mt-5">
+        <h2 class="section-heading">各事業所のご案内</h2>
+        <p class="mb-4">お弁当のご注文や各種ご相談は、お近くの事業所まで直接お電話ください。</p>
+        
+        <div class="office-list">
+          
+          <div class="office-card">
+            <h4>📍 配彩なは</h4>
+            <div class="office-details">
+              <p>【対応エリア】那覇市・浦添市・豊見城市周辺（※要確認）</p>
+              <div class="phone">
+                <strong>TEL:</strong> <a href="tel:098-884-8335">098-884-8335</a>
+              </div>
+              <p>住所：沖縄県那覇市首里末吉町4-1-21 1F</p>
+            </div>
+          </div>
+
+          <div class="office-card">
+            <h4>📍 配彩あわせ</h4>
+            <div class="office-details">
+              <p>【対応エリア】沖縄市周辺（※要確認）</p>
+              <div class="phone">
+                <strong>TEL:</strong> <a href="tel:098-923-0496">098-923-0496</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="office-card">
+            <h4>📍 配彩ナビィー</h4>
+            <div class="office-details">
+              <p>【対応エリア】恩納村周辺（※要確認）</p>
+              <div class="phone">
+                <strong>TEL:</strong> <a href="tel:098-966-8006">098-966-8006</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="office-card">
+            <h4>📍 配彩やんばる</h4>
+            <div class="office-details">
+              <p>【対応エリア】名護市周辺（※要確認）</p>
+              <div class="phone">
+                <strong>TEL:</strong> <a href="tel:0980-53-5022">0980-53-5022</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Sidebar (In-page navigation) -->
+    <aside class="sidebar">
+      <div class="sticky-nav">
+        <h3>目次</h3>
+        <ul>
+          <li><a href="#philosophy">基本理念</a></li>
+          <li><a href="#outline">組合概要</a></li>
+          <li><a href="#history">沿革</a></li>
+          <li><a href="#office">事業所のご案内</a></li>
+        </ul>
+        
+        <div class="mt-4">
+          <a href="/membership" class="btn btn-secondary" style="width: 100%; display: block; padding: 10px;">組合加入のご案内</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    margin-bottom: 40px;
+  }
+  .page-title { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+  .page-subtitle { font-size: 1.2rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+  .text-center { text-align: center; }
+  .mt-4 { margin-top: 30px; }
+  .mt-5 { margin-top: 60px; }
+  .mb-4 { margin-bottom: 25px; }
+  .text-light-gray { color: var(--color-text-light); }
+
+  /* Layout */
+  .layout-with-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 50px;
+    align-items: start;
+  }
+
+  /* Content */
+  .section-heading {
+    color: var(--color-primary-dark);
+    font-size: 1.8rem;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--color-bg-alt);
+    margin-bottom: 30px;
+    position: relative;
+  }
+  .section-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-secondary);
+  }
+
+  .philosophy-box {
+    background: var(--color-bg-alt);
+    padding: 40px;
+    border-radius: 12px;
+    border-left: 5px solid var(--color-primary);
+  }
+  .catchphrase { font-size: 1.5rem; color: var(--color-primary-dark); font-weight: bold; margin-bottom: 15px; }
+
+  .outline-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .outline-table th, .outline-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+  .outline-table th {
+    background-color: var(--color-bg-alt);
+    width: 30%;
+    color: var(--color-primary-dark);
+    font-weight: 700;
+  }
+
+  /* Office */
+  .office-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .office-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .office-card h4 {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 15px;
+    margin: 0;
+  }
+  .office-details {
+    padding: 20px;
+  }
+  .office-details p { font-size: 0.95rem; margin-bottom: 10px; }
+  .phone { font-size: 1.2rem; margin: 15px 0; }
+  .phone a { color: var(--color-primary-dark); text-decoration: none; font-weight: bold; }
+  .phone a:hover { text-decoration: underline; color: var(--color-primary); }
+
+  /* Sidebar */
+  .sidebar { position: sticky; top: 100px; } /* header-height + some gap */
+  .sticky-nav {
+    background: var(--color-white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+  }
+  .sticky-nav h3 { color: var(--color-primary-dark); border-bottom: 1px solid var(--color-border); padding-bottom: 10px; margin-bottom: 15px; }
+  .sticky-nav ul { padding-left: 0; }
+  .sticky-nav li { margin-bottom: 15px; }
+  .sticky-nav a { color: var(--color-text); transition: color 0.2s; display: block; }
+  .sticky-nav a:hover { color: var(--color-primary); transform: translateX(5px); }
+
+  @media (max-width: 991px) {
+    .layout-with-sidebar { grid-template-columns: 1fr; }
+    .sidebar { order: -1; position: static; margin-bottom: 40px; }
+  }
+  @media (max-width: 768px) {
+    .outline-table th, .outline-table td { display: block; width: 100%; }
+    .outline-table th { background: transparent; border-bottom: none; padding-bottom: 5px; color: var(--color-primary); }
+    .outline-table td { padding-top: 0; padding-bottom: 20px; }
+  }
+</style>

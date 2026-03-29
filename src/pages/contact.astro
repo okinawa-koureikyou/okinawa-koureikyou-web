@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const offices = [
+  { name: '配彩なは (那覇事業所)', address: '那覇市首里石嶺町4丁目373番地1', tel: '098-884-8335', fax: '098-884-8336' },
+  { name: '配彩あわせ (泡瀬事業所)', address: '沖縄市泡瀬2丁目54番7号', tel: '098-923-0496', fax: '098-923-0495' },
+  { name: '配彩ナビィー (恩納事業所)', address: '恩納村字仲泊1212番地', tel: '098-966-8006', fax: '098-966-8007' },
+  { name: '配彩やんばる (名護事業所)', address: '名護市大東1丁目1番15号', tel: '0980-53-5022', fax: '0980-53-5023' },
+];
+---
+
+<Layout title="お問い合わせ | 沖縄県高齢者協同組合" description="サービスのご利用、組合加入、採用に関するお問い合わせはこちらから。お電話またはメールで承っております。">
+  <div class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/images/image_6.jpg');">
+    <div class="container text-center">
+      <h1 class="page-title">お問い合わせ</h1>
+      <p class="page-subtitle">お困りごとやご相談、お気軽にお寄せください</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2 class="section-heading">お電話・FAXでのお問い合わせ</h2>
+          <p class="intro-text">お急ぎの方や配食サービスのご注文・変更については、お近くの各事業所まで直接お電話ください。</p>
+          
+          <div class="office-list">
+            {offices.map(office => (
+              <div class="office-card">
+                <h3>{office.name}</h3>
+                <p class="address">{office.address}</p>
+                <div class="contact-methods">
+                  <div class="method">
+                    <span class="label">TEL</span>
+                    <a href={`tel:${office.tel}`} class="value tel-link">{office.tel}</a>
+                  </div>
+                  <div class="method">
+                    <span class="label">FAX</span>
+                    <span class="value">{office.fax}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Contact Form Placeholder -->
+        <div class="contact-form-container">
+          <h2 class="section-heading">フォームでのお問い合わせ</h2>
+          <p class="intro-text">組合加入のご相談や、採用に関するお問い合わせは以下のフォームもご利用いただけます。</p>
+          
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">お名前 <span class="required">必須</span></label>
+              <input type="text" id="name" name="name" required placeholder="例：高齢 太郎" />
+            </div>
+            <div class="form-group">
+              <label for="email">メールアドレス <span class="required">必須</span></label>
+              <input type="email" id="email" name="email" required placeholder="例：example@mail.com" />
+            </div>
+            <div class="form-group">
+              <label for="type">お問い合わせ項目</label>
+              <select id="type" name="type">
+                <option value="service">サービス利用について</option>
+                <option value="membership">組合加入について</option>
+                <option value="recruit">採用について</option>
+                <option value="other">その他</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">お問い合わせ内容 <span class="required">必須</span></label>
+              <textarea id="message" name="message" rows="6" required placeholder="ご質問やご相談内容を入力してください"></textarea>
+            </div>
+            <div class="form-submit">
+              <button type="button" class="btn btn-primary btn-large" onclick="alert('現在はデモモードです。実際のお問い合わせはお電話にてお願いいたします。')">送信内容を確認する</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    margin-bottom: 40px;
+  }
+  .page-title { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+  .page-subtitle { font-size: 1.2rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+  .text-center { text-align: center; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .section-heading {
+    color: var(--color-primary-dark);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+  }
+
+  .intro-text {
+    color: var(--color-text-light);
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  /* Office Cards */
+  .office-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .office-card {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 25px;
+  }
+  .office-card h3 { color: var(--color-primary-dark); font-size: 1.25rem; margin-bottom: 10px; }
+  .office-card .address { font-size: 0.95rem; margin-bottom: 15px; color: var(--color-text); }
+
+  .contact-methods {
+    display: flex;
+    gap: 20px;
+  }
+  .method { display: flex; flex-direction: column; }
+  .method .label { font-size: 0.8rem; color: var(--color-text-light); font-weight: bold; }
+  .method .value { font-size: 1.15rem; font-weight: 700; color: var(--color-primary-dark); }
+  .tel-link { text-decoration: none; transition: color 0.2s; }
+  .tel-link:hover { color: var(--color-primary); }
+
+  /* Form Styling */
+  .contact-form-container {
+    background: var(--color-white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    padding: 40px;
+    border: 1px solid var(--color-border);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--color-primary-dark);
+  }
+  .required { color: #d32f2f; font-size: 0.85rem; margin-left: 5px; }
+
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--color-bg-alt);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-light);
+  }
+
+  .form-submit {
+    margin-top: 30px;
+    text-align: center;
+  }
+  .btn-large { width: 100%; }
+
+  @media (max-width: 1100px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .contact-form-container { padding: 25px; }
+    .page-title { font-size: 2rem; }
+    .contact-methods { flex-direction: column; gap: 10px; }
+  }
+</style>

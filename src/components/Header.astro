@@ -1,0 +1,199 @@
+---
+const navItems = [
+  { label: 'ホーム', href: '/' },
+  { label: 'サービス案内', href: '/services' },
+  { label: '組合概要', href: '/about' },
+  { label: '採用情報', href: '/recruit' },
+  { label: 'お知らせ', href: '/news' },
+  { label: '組合加入・様式', href: '/membership' }
+];
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <img src="/images/image_5.jpg" alt="沖縄県高齢者協同組合" class="logo-image" />
+    </a>
+
+    <!-- Hamburger Menu Icon for Mobile -->
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="メニューを開く">
+      <span class="hamburger"></span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav-menu">
+      <ul class="nav-list">
+        {navItems.map(item => (
+          <li class="nav-item">
+            <a href={item.href} class="nav-link">{item.label}</a>
+          </li>
+        ))}
+        <li class="nav-item nav-contact">
+          <a href="/contact" class="btn btn-primary btn-sm">お問い合わせ</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  
+  if (toggleBtn && navMenu) {
+    toggleBtn.addEventListener('click', () => {
+      toggleBtn.classList.toggle('active');
+      navMenu.classList.toggle('open');
+    });
+  }
+</script>
+
+<style>
+  .header {
+    background-color: var(--color-white);
+    height: var(--header-height);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0; /* ロゴがメニューに潰されないように固定 */
+  }
+
+  .logo-image {
+    height: 50px;
+    max-width: 160px; /* 横幅を制限してメニューのスペースを確保 */
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+  }
+
+  .logo-image:hover {
+    transform: scale(1.05); /* 少しだけ大きくしてプレミアム感を出す */
+  }
+
+  /* Desktop Nav */
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* 余白を少し詰める */
+  }
+
+  .nav-link {
+    font-size: 0.95rem; /* 文字サイズを抑制 */
+    font-weight: 600; /* 読みやすさのために少し太く */
+    color: var(--color-text);
+    padding: 8px 10px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    white-space: nowrap; /* 改行防止 */
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+    background-color: var(--color-bg-alt);
+  }
+
+  .btn-sm {
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  /* Mobile Toggle (Hidden on Desktop) */
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 1001; /* Above mobile menu */
+  }
+
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-primary-dark);
+    position: absolute;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+  }
+
+  .hamburger { top: 50%; transform: translateY(-50%); }
+  .hamburger::before { content: ''; top: -8px; }
+  .hamburger::after { content: ''; bottom: -8px; }
+
+  /* Hamburger Animation */
+  .mobile-toggle.active .hamburger { background-color: transparent; }
+  .mobile-toggle.active .hamburger::before { top: 0; transform: rotate(45deg); }
+  .mobile-toggle.active .hamburger::after { bottom: 0; transform: rotate(-45deg); }
+
+  /* Mobile Styles */
+  @media (max-width: 1024px) { /* 項目が多いので早めにハンバーガーメニューに切り替える */
+    .mobile-toggle { display: block; }
+    
+    .nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background-color: var(--color-white);
+      box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding-top: var(--header-height);
+    }
+
+    .nav.open {
+      right: 0;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      gap: 0;
+    }
+
+    .nav-item {
+      width: 100%;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-link {
+      display: block;
+      padding: 15px 10px;
+      font-size: 1.1rem;
+    }
+
+    .nav-contact {
+      border-bottom: none;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .btn-sm {
+      width: 100%;
+      padding: 12px;
+    }
+  }
+</style>

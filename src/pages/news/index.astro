@@ -1,0 +1,165 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const newsEntries = await getCollection('news');
+const newsList = newsEntries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="お知らせ・配彩だより | 沖縄県高齢者協同組合" description="沖縄県高齢者協同組合からの最新のお知らせや、活動の様子をお届けします。">
+  <div class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/images/image_4.jpg');">
+    <div class="container text-center">
+      <h1 class="page-title">お知らせ・配彩だより</h1>
+      <p class="page-subtitle">日々の活動や、最新の情報をお届けします</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      
+      <div class="content-block">
+        <h2 class="section-heading">新着のお知らせ</h2>
+        
+        {newsList.length === 0 ? (
+          <div class="flex-center empty-state">
+            <p>現在、お知らせは準備中です。</p>
+          </div>
+        ) : (
+          <div class="news-grid">
+            {newsList.map((news) => {
+              const date = news.data.date;
+              const formattedDate = `${date.getFullYear()}年${String(date.getMonth() + 1).padStart(2, '0')}月${String(date.getDate()).padStart(2, '0')}日`;
+              const category = news.data.category;
+              const isImportant = news.data.isImportant;
+
+              return (
+                <article class="news-card">
+                  <a href={`/news/${news.id}`} class="news-link">
+                    <div class="news-meta">
+                      <time datetime={date.toISOString()} class="news-date">{formattedDate}</time>
+                      <span class={`news-badge ${isImportant ? 'badge-important' : 'badge-normal'}`}>{category}</span>
+                    </div>
+                    <h3 class="news-title">{news.data.title}</h3>
+                  </a>
+                </article>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    margin-bottom: 40px;
+  }
+  .page-title { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+  .page-subtitle { font-size: 1.2rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+  .text-center { text-align: center; }
+  .flex-center { display: flex; justify-content: center; padding: 50px; }
+
+  .content-block {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .section-heading {
+    color: var(--color-primary-dark);
+    font-size: 1.8rem;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--color-bg-alt);
+    margin-bottom: 30px;
+    position: relative;
+  }
+  .section-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-primary);
+  }
+
+  .empty-state {
+    background: var(--color-bg-alt);
+    border-radius: 8px;
+    color: var(--color-text-light);
+  }
+
+  /* News List */
+  .news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .news-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  
+  .news-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: var(--color-primary-light);
+  }
+  
+  .news-link {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+  
+  .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .news-date {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+  
+  .news-badge {
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: var(--color-white);
+  }
+  
+  .badge-important { background-color: #d32f2f; }
+  .badge-normal { background-color: var(--color-secondary-dark); }
+  
+  .news-title {
+    font-size: 1.3rem;
+    color: var(--color-primary-dark);
+    margin: 0;
+    line-height: 1.5;
+    transition: color 0.2s;
+  }
+  .news-link:hover .news-title {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .page-title { font-size: 2rem; }
+    .news-meta { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .news-title { font-size: 1.15rem; }
+  }
+</style>

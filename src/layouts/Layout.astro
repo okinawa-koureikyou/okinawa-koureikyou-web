@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "沖縄県高齢者協同組合 | 健康で安心できる暮らしをサポート", 
+  description = "沖縄県高齢者協同組合は、配食サービスや日常生活支援を通じて、地域に根ざした活動で社会に貢献します。" 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/jpeg" href="/images/image_2.jpg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO and Meta tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:site_name" content="沖縄県高齢者協同組合" />
+    <meta name="theme-color" content="#FF7043" />
+  </head>
+  <body>
+    <Header />
+    
+    <main class="main-content">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .main-content {
+    min-height: calc(100vh - var(--header-height) - 400px); /* rough estimation for footer */
+  }
+</style>

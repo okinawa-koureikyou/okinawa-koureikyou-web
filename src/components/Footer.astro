@@ -1,0 +1,212 @@
+---
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    
+    <div class="footer-col brand-col">
+      <div class="footer-logo">
+        <img src="/images/image_5.jpg" alt="沖縄県高齢者協同組合" class="logo-image-small" />
+      </div>
+      <p class="company-desc">健康で安心できる暮らしをサポートし、地域に根ざした活動を通じて社会に貢献します。</p>
+      <div class="contact-info">
+        <p><strong>本部事務局</strong></p>
+        <p>〒903-0801</p>
+        <p>沖縄県那覇市首里末吉町4-1-21 1F</p>
+        <p class="tel">TEL: <a href="tel:098-917-6077">098-917-6077</a></p>
+        <p>FAX: 098-917-6078</p>
+        <p>営業時間: 9:00～18:00（日曜・祝日定休）</p>
+      </div>
+    </div>
+
+    <div class="footer-col links-col">
+      <h3 class="footer-heading">事業内容</h3>
+      <ul class="footer-links">
+        <li><a href="/services/meals">配食サービス事業</a></li>
+        <li><a href="/services/life-support">日常生活支援事業</a></li>
+        <li><a href="/services/agriculture">地産地消農産事業</a></li>
+      </ul>
+      
+      <h3 class="footer-heading footer-heading-mt">各事業所 (配食のお問合せ)</h3>
+      <ul class="footer-links">
+        <li>配彩なは：<a href="tel:098-884-8335">098-884-8335</a></li>
+        <li>配彩あわせ：<a href="tel:098-923-0496">098-923-0496</a></li>
+        <li>配彩ナビィー：<a href="tel:098-966-8006">098-966-8006</a></li>
+        <li>配彩やんばる：<a href="tel:0980-53-5022">0980-53-5022</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col links-col">
+      <h3 class="footer-heading">組合について</h3>
+      <ul class="footer-links">
+        <li><a href="/about">組合概要・理念</a></li>
+        <li><a href="/about#office">事業所一覧・アクセス</a></li>
+        <li><a href="/recruit">採用情報</a></li>
+        <li><a href="/membership">組合加入のご案内</a></li>
+        <li><a href="/membership#download">様式ダウンロード</a></li>
+      </ul>
+      
+      <div class="action-box">
+        <h4 class="action-title">お気軽にご相談ください</h4>
+        <a href="/contact" class="btn btn-primary btn-full">お問い合わせフォーム</a>
+      </div>
+    </div>
+
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="container bottom-inner">
+      <p class="copyright">&copy; {new Date().getFullYear()} 生活協同組合・沖縄県高齢者協同組合. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-bg-alt);
+    padding-top: 60px;
+    border-top: 4px solid var(--color-primary-light);
+    color: var(--color-text);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .footer-heading {
+    font-size: 1.2rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-primary-light);
+    display: inline-block;
+  }
+
+  .footer-heading-mt {
+    margin-top: 30px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .logo-image-small {
+    height: 40px;
+    max-width: 150px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  .company-desc {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .contact-info p {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    color: var(--color-text-light);
+  }
+
+  .tel {
+    font-size: 1.1rem !important;
+    font-weight: bold;
+    color: var(--color-primary-dark) !important;
+    margin-top: 10px;
+  }
+
+  .tel a, .footer-links a[href^="tel:"] {
+    color: var(--color-primary-dark);
+  }
+
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+
+  .footer-links a {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    display: inline-block;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-primary);
+    transform: translateX(5px);
+  }
+
+  .action-box {
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .action-title {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: var(--color-text);
+  }
+
+  .btn-full {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+
+  .footer-bottom {
+    background-color: var(--color-primary-dark);
+    padding: 15px 0;
+    color: var(--color-white);
+  }
+
+  .bottom-inner {
+    text-align: left;
+  }
+
+  .copyright {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+
+  /* Responsive styling */
+  @media (max-width: 991px) {
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+    .brand-col {
+      grid-column: 1 / -1;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 30px;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .footer-heading {
+      width: 100%;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .bottom-inner {
+      text-align: center;
+    }
+  }
+</style>

@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="地産地消農産事業 | 沖縄県高齢者協同組合" description="沖縄の豊かな自然が育んだ農産物を、地域の皆様へ。地産地消を通じて、食の安全と地域農業の活性化に貢献します。">
+  <div class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/images/image_5.jpg');">
+    <div class="container text-center">
+      <h1 class="page-title">地産地消農産事業</h1>
+      <p class="page-subtitle">沖縄の「旬」と「安心」を食卓へ</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block intro-block text-center">
+        <h2 class="section-heading">地域をむすぶ、食のネットワーク</h2>
+        <p class="lead-text">
+          私たちは、県内の生産者が丹精込めて育てた新鮮な野菜や果物を、地域の皆様、そして配食サービスのお弁当へと繋げる活動を行っています。<br/>
+          「地産地消」は、輸送コストや鮮度の面だけでなく、地域の農業を支え、食の自給率向上に貢献する大切な取り組みです。
+        </p>
+      </div>
+
+      <div class="info-grid mt-5">
+        <div class="info-card">
+          <div class="icon">🌿</div>
+          <h3>旬の野菜を食卓に</h3>
+          <p>季節ごとに収穫される沖縄県産の農産物。その時期に一番おいしく、栄養価の高い「旬」の味覚を大切にしています。</p>
+        </div>
+        <div class="info-card">
+          <div class="icon">🍱</div>
+          <h3>お弁当への活用</h3>
+          <p>当組合の「配彩弁当」でも、可能な限り県産食材を使用。地域の恵みを、健康的で温かいお食事としてお届けしています。</p>
+        </div>
+        <div class="info-card">
+          <div class="icon">🤝</div>
+          <h3>生産者とのつながり</h3>
+          <p>顔の見える生産者との連携を深め、食の安全・安心を確認しながら、共に地域を盛り上げる活動を推進しています。</p>
+        </div>
+      </div>
+
+      <div class="status-box mt-5">
+        <p>※本事業に関する具体的な販売・イベント情報については、現在準備中です。決まり次第、「お知らせ」板にて随時ご案内いたします。</p>
+      </div>
+      
+      <div class="text-center mt-5">
+        <a href="/services" class="btn btn-secondary">サービス案内一覧へ戻る</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    margin-bottom: 40px;
+  }
+  .page-title { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+  .page-subtitle { font-size: 1.2rem; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+  .text-center { text-align: center; }
+
+  .content-block { max-width: 800px; margin: 0 auto 60px; }
+  .section-heading { color: var(--color-primary-dark); font-size: 2rem; margin-bottom: 20px; }
+  .lead-text { font-size: 1.15rem; line-height: 1.8; color: var(--color-text); }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  .info-card {
+    background: var(--color-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    border: 1px solid var(--color-border);
+  }
+  .info-card .icon { font-size: 3rem; margin-bottom: 15px; }
+  .info-card h3 { color: var(--color-primary-dark); margin-bottom: 15px; }
+  .info-card p { color: var(--color-text-light); line-height: 1.6; }
+
+  .status-box {
+    background-color: var(--color-bg-alt);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 1rem;
+    border-left: 5px solid var(--color-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .page-title { font-size: 2rem; }
+  }
+</style>

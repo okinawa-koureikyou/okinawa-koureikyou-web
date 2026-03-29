@@ -1,0 +1,283 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allNews = await getCollection('news');
+const latestNews = allNews
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<Layout title="沖縄県高齢者協同組合 | 健康で安心できる暮らしをサポート">
+  <!-- Hero Section -->
+  <section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('/images/image_4.jpg');">
+    <div class="container hero-content">
+      <h1 class="hero-title">沖縄のみなさまへ、<br class="sp-br"/>温かい食事と安心を。</h1>
+      <p class="hero-subtitle">私たちは「健康に配慮した安心安全なお食事」のお届けを通じ、<br class="pc-br"/>地域に根ざした活動で高齢者の皆様の暮らしをサポートしています。</p>
+      
+      <div class="hero-buttons">
+        <a href="/services/meals" class="btn btn-primary btn-large">お弁当のご相談はこちら</a>
+        <a href="/recruit" class="btn btn-secondary btn-large">一緒に働く仲間も募集中</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="section news-section">
+    <div class="container">
+      <h2 class="section-title">お知らせ・配彩だより</h2>
+      
+      <div class="news-list">
+        {latestNews.length === 0 ? (
+          <p class="text-center">現在、お知らせはありません。</p>
+        ) : (
+          latestNews.map((news) => {
+            const date = news.data.date;
+            const formattedDate = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+            return (
+              <article class="news-card">
+                <div class="news-date">{formattedDate}</div>
+                <span class={`news-badge ${news.data.isImportant ? '' : 'badge-normal'}`}>
+                  {news.data.category}
+                </span>
+                <h3 class="news-summary">
+                  <a href={`/news/${news.id}`}>{news.data.title}</a>
+                </h3>
+              </article>
+            );
+          })
+        )}
+      </div>
+      
+      <div class="text-center" style="margin-top: 30px;">
+        <a href="/news" class="btn btn-secondary">お知らせ一覧を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="section services-section">
+    <div class="container">
+      <h2 class="section-title">主要な事業サービス</h2>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="/images/image_1.jpg" alt="配彩弁当サービス" class="service-img" />
+          <div class="service-body">
+            <h3>配彩弁当サービス</h3>
+            <p>健康を支える栄養バランス弁当をお届けします。普通食から病理食、きざみ食まで様々なニーズに対応可能です。</p>
+            <a href="/services/meals" class="btn btn-primary btn-sm mt-3">詳しく見る</a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="/images/image_2.jpg" alt="日常生活支援サービス" class="service-img" />
+          <div class="service-body">
+            <h3>日常生活支援サービス</h3>
+            <p>買い物代行や外出支援、ちょっとした困りごとなど、安心して暮らすための生活サポートを行います。</p>
+            <a href="/services/life-support" class="btn btn-primary btn-sm mt-3">詳しく見る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to action/Membership info -->
+  <section class="section cta-section">
+    <div class="container text-center">
+      <h2>組合員になりませんか？</h2>
+      <p>沖縄県高齢者協同組合は、みなさまの出資金（1口1,000円）で運営されています。<br class="pc-br"/>サービスを利用したい方、活動に参加したい方のご加入をいつでもお待ちしております。</p>
+      
+      <div style="margin-top: 30px;">
+        <a href="/membership" class="btn btn-primary btn-large">組合加入のご案内・手続き</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    height: 60vh;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--color-white);
+  }
+
+  .hero-content {
+    width: 100%;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  }
+
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .btn-large {
+    padding: 15px 35px;
+    font-size: 1.15rem;
+  }
+
+  /* News Section */
+  .news-section {
+    background-color: var(--color-white);
+  }
+
+  .news-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .news-card {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.2s;
+  }
+
+  .news-card:hover {
+    background-color: var(--color-bg);
+  }
+
+  .news-date {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    min-width: 100px;
+  }
+
+  .news-badge {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-right: 15px;
+    min-width: 60px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .badge-normal {
+    background-color: var(--color-secondary);
+  }
+
+  .news-summary {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .news-summary a:hover {
+    color: var(--color-primary);
+  }
+
+  /* Services Grid */
+  .services-section {
+    background-color: var(--color-bg);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background-color: var(--color-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .service-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .service-body {
+    padding: 30px;
+  }
+
+  .service-body h3 {
+    color: var(--color-primary-dark);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .service-body p {
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+  }
+
+  /* CTA */
+  .cta-section {
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-primary-light);
+  }
+
+  .cta-section h2 {
+    font-size: 2.2rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 20px;
+  }
+
+  .text-center { text-align: center; }
+  .mt-3 { margin-top: 15px; }
+  .pc-br { display: block; }
+  .sp-br { display: none; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Mobile Responses */
+  @media (max-width: 768px) {
+    .hero-title { font-size: 2.2rem; }
+    .hero-buttons { 
+      flex-direction: column; 
+      gap: 15px; 
+    }
+    .btn-large { width: 100%; }
+    
+    .news-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .news-date { width: auto; }
+    
+    .pc-br { display: none; }
+    .sp-br { display: block; }
+  }
+</style>
