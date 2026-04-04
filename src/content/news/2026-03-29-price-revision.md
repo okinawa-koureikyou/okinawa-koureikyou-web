@@ -1,7 +1,7 @@
 ---
 title: "配食サービスの料金改定について"
 date: 2026-03-29
-category: "重要"
+category: "お知らせ"
 isImportant: true
 ---
 

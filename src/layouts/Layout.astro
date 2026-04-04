@@ -31,17 +31,195 @@ const {
     <meta property="og:url" content={Astro.url} />
     <meta property="og:site_name" content="沖縄県高齢者協同組合" />
     <meta name="theme-color" content="#FF7043" />
+
+    <script is:inline>
+      // 認証チェックを最速で行い、未認証ならhtmlにクラスを付与
+      if (sessionStorage.getItem('auth_access') !== 'granted') {
+        document.documentElement.classList.add('is-locked');
+      }
+    </script>
   </head>
   <body>
-    <Header />
-    
-    <main class="main-content">
-      <slot />
-    </main>
+    <!-- ログインオーバーレイ -->
+    <div id="login-overlay" class="login-overlay">
+      <div class="login-box">
+        <img src={import.meta.env.BASE_URL + "favicon.svg"} alt="Logo" class="login-logo" />
+        <h2>関係者専用ページ</h2>
+        <p>閲覧するにはログインしてください。</p>
+        <div class="login-form">
+          <div class="input-group">
+            <label for="login-id">ユーザーID</label>
+            <input type="text" id="login-id" placeholder="admin" />
+          </div>
+          <div class="input-group">
+            <label for="login-pw">パスワード</label>
+            <input type="password" id="login-pw" placeholder="11111" />
+          </div>
+          <p id="login-error" class="error-message" style="display: none;">IDまたはパスワードが正しくありません。</p>
+          <button id="login-button">ログイン</button>
+        </div>
+      </div>
+    </div>
 
-    <Footer />
+    <div class="site-wrapper">
+      <Header />
+      
+      <main class="main-content">
+        <slot />
+      </main>
+
+      <Footer />
+    </div>
+
+    <script is:inline>
+      (function() {
+        const overlay = document.getElementById('login-overlay');
+        const loginBtn = document.getElementById('login-button');
+        const idInput = document.getElementById('login-id');
+        const pwInput = document.getElementById('login-pw');
+        const errorMsg = document.getElementById('login-error');
+
+        // 認証済みの場合はオーバーレイを非表示にする
+        if (sessionStorage.getItem('auth_access') === 'granted') {
+          if (overlay) overlay.style.display = 'none';
+          document.documentElement.classList.remove('is-locked');
+        }
+
+        function handleLogin() {
+          const id = idInput.value;
+          const pw = pwInput.value;
+
+          if (id === 'admin' && pw === '11111') {
+            sessionStorage.setItem('auth_access', 'granted');
+            location.reload();
+          } else {
+            errorMsg.style.display = 'block';
+            pwInput.value = '';
+          }
+        }
+
+        if (loginBtn) {
+          loginBtn.addEventListener('click', handleLogin);
+        }
+
+        // Enterキーでもログインできるようにする
+        [idInput, pwInput].forEach(input => {
+          input?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleLogin();
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
+
+<style is:global>
+  /* 認証が必要な場合のスタイル */
+  html.is-locked .site-wrapper {
+    display: none !important;
+  }
+  
+  .login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+  }
+
+  .login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .login-logo {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+  }
+
+  .login-box h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 24px;
+  }
+
+  .login-box p {
+    color: #666;
+    margin-bottom: 30px;
+  }
+
+  .login-form {
+    text-align: left;
+  }
+
+  .input-group {
+    margin-bottom: 20px;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  .login-button {
+    width: 100%;
+    padding: 14px;
+    background: #FF7043;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  #login-button {
+    width: 100%;
+    padding: 14px;
+    background: #FF7043;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  #login-button:hover {
+    background: #f4511e;
+  }
+
+  .error-message {
+    color: #d32f2f;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+</style>
 
 <style>
   .main-content {
