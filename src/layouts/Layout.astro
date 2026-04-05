@@ -47,16 +47,18 @@ const {
         <h2>関係者専用ページ</h2>
         <p>閲覧するにはログインしてください。</p>
         <div class="login-form">
-          <div class="input-group">
-            <label for="login-id">ユーザーID</label>
-            <input type="text" id="login-id" placeholder="admin" />
-          </div>
-          <div class="input-group">
-            <label for="login-pw">パスワード</label>
-            <input type="password" id="login-pw" placeholder="11111" />
-          </div>
-          <p id="login-error" class="error-message" style="display: none;">IDまたはパスワードが正しくありません。</p>
-          <button id="login-button">ログイン</button>
+          <form autocomplete="off" onsubmit="return false">
+            <div class="input-group">
+              <label for="u-gate">ユーザーID</label>
+              <input type="password" id="u-gate" name="u-gate" autocomplete="new-password" />
+            </div>
+            <div class="input-group">
+              <label for="p-gate">パスワード</label>
+              <input type="password" id="p-gate" name="p-gate" autocomplete="new-password" />
+            </div>
+            <p id="login-error" class="error-message" style="display: none;">IDまたはパスワードが正しくありません。</p>
+            <button type="button" id="login-button">ログイン</button>
+          </form>
         </div>
       </div>
     </div>
@@ -75,8 +77,8 @@ const {
       (function() {
         const overlay = document.getElementById('login-overlay');
         const loginBtn = document.getElementById('login-button');
-        const idInput = document.getElementById('login-id');
-        const pwInput = document.getElementById('login-pw');
+        const idInput = document.getElementById('u-gate');
+        const pwInput = document.getElementById('p-gate');
         const errorMsg = document.getElementById('login-error');
 
         // 認証済みの場合はオーバーレイを非表示にする
